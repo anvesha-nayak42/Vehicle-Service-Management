@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vehicle Service Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="header-content">
+
+            <div>
+
+                <h1>🚗 Vehicle Service Management System</h1>
+
+                <p>
+                    Service Center Management Dashboard
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <button onclick="showSection('dashboard')">
+            Dashboard
+        </button>
+
+        <button onclick="showSection('addService')">
+            Add Service
+        </button>
+
+        <button onclick="showSection('records')">
+            Service Records
+        </button>
+
+        <button onclick="showSection('billing')">
+            Billing
+        </button>
+
+    </nav>
+
+
+
+    <!-- MAIN -->
+
+    <main>
+
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="section active">
+
+            <h2>Dashboard</h2>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👤
+                    </div>
+
+                    <h3>Total Customers</h3>
+
+                    <p id="customerCount">
+                        0
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🚗
+                    </div>
+
+                    <h3>Total Vehicles</h3>
+
+                    <p id="vehicleCount">
+                        0
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ⏳
+                    </div>
+
+                    <h3>Pending Services</h3>
+
+                    <p id="pendingCount">
+                        0
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ✅
+                    </div>
+
+                    <h3>Completed Services</h3>
+
+                    <p id="completedCount">
+                        0
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        💰
+                    </div>
+
+                    <h3>Total Revenue</h3>
+
+                    <p>
+                        ₹<span id="revenue">0</span>
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome-box">
+
+                <h2>
+                    Welcome to Vehicle Service Management System
+                </h2>
+
+                <p>
+
+                    Manage customers, vehicles, service requests,
+                    service status and billing from one place.
+
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="showSection('addService')">
+
+                    + Add New Service
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- ================= ADD SERVICE ================= -->
+
+        <section
+            id="addService"
+            class="section">
+
+            <h2>
+                Add Vehicle Service
+            </h2>
+
+
+            <form id="serviceForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- CUSTOMER -->
+
+                    <div>
+
+                        <label>
+                            Customer Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customer"
+                            placeholder="Enter customer name"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div>
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- VEHICLE NUMBER -->
+
+                    <div>
+
+                        <label>
+                            Vehicle Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="vehicle"
+                            placeholder="Example: KA01AB1234"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- MODEL -->
+
+                    <div>
+
+                        <label>
+                            Vehicle Model
+                        </label>
+
+                        <input
+                            type="text"
+                            id="model"
+                            placeholder="Example: Honda City"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- SERVICE TYPE -->
+
+                    <div>
+
+                        <label>
+                            Service Type
+                        </label>
+
+                        <select id="serviceType">
+
+                            <option>
+                                General Service
+                            </option>
+
+                            <option>
+                                Oil Change
+                            </option>
+
+                            <option>
+                                Engine Repair
+                            </option>
+
+                            <option>
+                                Brake Service
+                            </option>
+
+                            <option>
+                                Tyre Replacement
+                            </option>
+
+                            <option>
+                                Battery Service
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- SERVICE COST -->
+
+                    <div>
+
+                        <label>
+                            Service Cost
+                        </label>
+
+                        <input
+                            type="number"
+                            id="serviceCost"
+                            placeholder="Enter service cost"
+                            min="0"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- LABOUR COST -->
+
+                    <div>
+
+                        <label>
+                            Labour Cost
+                        </label>
+
+                        <input
+                            type="number"
+                            id="labourCost"
+                            placeholder="Enter labour cost"
+                            min="0"
+                            required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div>
+
+                    <label>
+                        Service Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="5"
+                        placeholder="Describe the vehicle problem or service required..."
+                        required></textarea>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="primary">
+
+                    Add Service
+
+                </button>
+
+
+            </form>
+
+
+
+            <div
+                id="formMessage"
+                class="message">
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- ================= SERVICE RECORDS ================= -->
+
+        <section
+            id="records"
+            class="section">
+
+
+            <h2>
+                Service Records
+            </h2>
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Vehicle
+                            </th>
+
+                            <th>
+                                Service
+                            </th>
+
+                            <th>
+                                Cost
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody id="serviceTable">
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- ================= BILLING ================= -->
+
+        <section
+            id="billing"
+            class="section">
+
+
+            <h2>
+                Billing Management
+            </h2>
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Vehicle
+                            </th>
+
+                            <th>
+                                Service Cost
+                            </th>
+
+                            <th>
+                                Labour
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Payment
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody id="billingTable">
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Vehicle Service Management System
+        </p>
+
+        <p>
+            AAT Project
+        </p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
